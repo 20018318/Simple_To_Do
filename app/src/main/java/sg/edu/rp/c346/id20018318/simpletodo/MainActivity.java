@@ -3,6 +3,7 @@ package sg.edu.rp.c346.id20018318.simpletodo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -69,24 +70,36 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String toDo = task.getText().toString();
-                alTasks.add(toDo);
-                adapter.notifyDataSetChanged();
+                String input = task.getText().toString();
+                if (TextUtils.isEmpty(input)) {
+                    task.setError("This item cannot be empty");
+                } else {
+                    String toDo = task.getText().toString();
+                    alTasks.add(toDo);
+                    adapter.notifyDataSetChanged();
+                }
             }
         });
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int pos = Integer.parseInt(task.getText().toString());
-                if (alTasks.isEmpty()) {
-                    Toast.makeText(MainActivity.this, R.string.toast1, Toast.LENGTH_SHORT).show();
-                } else if (pos >= alTasks.size()) {
-                    Toast.makeText(MainActivity.this, R.string.toast2, Toast.LENGTH_SHORT).show();
+                String input = task.getText().toString();
+                if (TextUtils.isEmpty(input)) {
+                    task.setError("This item cannot be empty");
                 } else {
-                    alTasks.remove(pos);
-                    adapter.notifyDataSetChanged();
-                    Toast.makeText(MainActivity.this, R.string.toast3, Toast.LENGTH_SHORT).show();
+                    if (!alTasks.isEmpty()) {
+                        int pos = Integer.parseInt(task.getText().toString());
+                        if (pos >= alTasks.size()) {
+                            Toast.makeText(MainActivity.this, R.string.toast2, Toast.LENGTH_SHORT).show();
+                        } else {
+                            alTasks.remove(pos);
+                            adapter.notifyDataSetChanged();
+                            Toast.makeText(MainActivity.this, R.string.toast3, Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, R.string.toast1, Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
