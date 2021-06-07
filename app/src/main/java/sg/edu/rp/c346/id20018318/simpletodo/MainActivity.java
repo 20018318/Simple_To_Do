@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String input = task.getText().toString();
                 if (TextUtils.isEmpty(input)) {
-                    task.setError("This item cannot be empty");
+                    task.setError(getString(R.string.errorMsg));
                 } else {
                     String toDo = task.getText().toString();
                     alTasks.add(toDo);
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String input = task.getText().toString();
                 if (TextUtils.isEmpty(input)) {
-                    task.setError("This item cannot be empty");
+                    task.setError(getString(R.string.errorMsg));
                 } else {
                     if (!alTasks.isEmpty()) {
                         int pos = Integer.parseInt(task.getText().toString());
