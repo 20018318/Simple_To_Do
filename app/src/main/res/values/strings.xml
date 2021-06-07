@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Simple To Do</string>
+    <string name="hint1">Type in a new task here</string>
+    <string name="hint2">Type in the index of the task to be removed</string>
+    <string name="toast1">You don\'t have any task to remove</string>
+    <string name="toast2">Wrong index number</string>
+    <string name="toast3">Successfully removed task</string>
     <string-array name="spinnerItems">
         <item>Add a new task</item>
         <item>Remove a task</item>

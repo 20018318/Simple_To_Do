@@ -48,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch(position) {
                     case 0:
-                        task.setHint("Type in a new task here");
+                        task.setHint(R.string.hint1);
                         add.setEnabled(true);
                         delete.setEnabled(false);
                         break;
                     case 1:
-                        task.setHint("Type in the index of the task to be removed");
+                        task.setHint(R.string.hint2);
                         delete.setEnabled(true);
                         add.setEnabled(false);
                         break;
@@ -80,12 +80,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int pos = Integer.parseInt(task.getText().toString());
                 if (alTasks.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "You don't have any task to remove", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.toast1, Toast.LENGTH_SHORT).show();
                 } else if (pos >= alTasks.size()) {
-                    Toast.makeText(MainActivity.this, "Wrong index number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.toast2, Toast.LENGTH_SHORT).show();
                 } else {
                     alTasks.remove(pos);
                     adapter.notifyDataSetChanged();
+                    Toast.makeText(MainActivity.this, R.string.toast3, Toast.LENGTH_SHORT).show();
                 }
             }
         });
